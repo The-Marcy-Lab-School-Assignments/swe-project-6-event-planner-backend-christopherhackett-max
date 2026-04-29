@@ -38,7 +38,7 @@ const deleteUser = async (req, res, next) => {
                 .send({ message: 'You can only delete your own account.' });
         }
 
-        const user = await userModel.delete(userId);
+        const user = await userModel.destroy(userId);
         if (!user) return res.status(404).send({ message: 'User not found' });
         res.send(user);
     } catch (err) {
